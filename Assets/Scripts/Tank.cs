@@ -8,6 +8,11 @@ public class Tank : MonoBehaviour
     public float movementSpeed;
     public float rotationSpeed;
     public GameObject turret;
+    public GameObject bulletSpawner;
+    public int maxAmmo;
+    private int ammo;
+    public float reloadInterval;
+    private float reloadCount;
     public GameObject bulletPrefab;
     public float bulletSpeed;
     private float spriteAngle = 0f;
@@ -15,7 +20,7 @@ public class Tank : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ammo = maxAmmo;
     }
 
     // Update is called once per frame
@@ -32,10 +37,22 @@ public class Tank : MonoBehaviour
         updateTurretAngle(mouseDirection);
 
         if (Input.GetMouseButtonDown(0)) {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+            if (ammo > 0) {
+                GameObject bullet = Instantiate(bulletPrefab, bulletSpawner.transform.position, Quaternion.identity);
+                Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+                bulletRb.velocity = bulletSpeed * mouseDirection;
 
-            bulletRb.velocity = bulletSpeed * mouseDirection;
+                ammo -= 1;
+            }
+        }
+
+        if (ammo < maxAmmo) {
+            if (reloadCount >= reloadInterval) {
+                ammo += 1;
+                reloadCount = 0;
+            }
+
+            reloadCount += Time.deltaTime;
         }
     }
 
