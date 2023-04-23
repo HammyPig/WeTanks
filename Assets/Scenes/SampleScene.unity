@@ -290,6 +290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  bulletPrefab: {fileID: 3894925745642926595, guid: 7f3c31dadfe1bee4bb5db97dbc4a406a, type: 3}
+  bulletSpeed: 8
 --- !u!4 &2031845354
 Transform:
   m_ObjectHideFlags: 0
