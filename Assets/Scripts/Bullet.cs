@@ -30,5 +30,9 @@ public class Bullet : MonoBehaviour
 
             bounceCount += 1;
         }
+
+        if (collision.gameObject.CompareTag("Bullet")) {
+            Destroy(gameObject);
+        }
     }
 }
