@@ -7,6 +7,7 @@ public class Tank : MonoBehaviour
     public Rigidbody2D rigidBody;
     public float movementSpeed;
     public float rotationSpeed;
+    public GameObject turret;
     public GameObject bulletPrefab;
     public float bulletSpeed;
     private float spriteAngle = 0f;
@@ -24,11 +25,13 @@ public class Tank : MonoBehaviour
         rigidBody.velocity = movementSpeed * direction;
 
         if (direction.magnitude > 0.1f) { updateSpriteAngle(direction); }
+        
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseDirection = (mousePosition - transform.position).normalized;
+
+        updateTurretAngle(mouseDirection);
 
         if (Input.GetMouseButtonDown(0)) {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 mouseDirection = (mousePosition - transform.position).normalized;
-
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
 
@@ -39,7 +42,7 @@ public class Tank : MonoBehaviour
     private void updateSpriteAngle(Vector3 direction) {
         float newSpriteAngle1 = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         float newSpriteAngle2 = oppositeAngle(newSpriteAngle1);
-        
+
         float relativeAngle;
         if ((Mathf.Abs(spriteAngle - newSpriteAngle1) % 280) < (Mathf.Abs(spriteAngle - newSpriteAngle2) % 280)) {
             relativeAngle = newSpriteAngle1 - spriteAngle;
@@ -59,5 +62,10 @@ public class Tank : MonoBehaviour
         } else {
             return angle + 180;
         }
+    }
+
+    private void updateTurretAngle(Vector3 mouseDirection) {
+        float angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
+        turret.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 }
