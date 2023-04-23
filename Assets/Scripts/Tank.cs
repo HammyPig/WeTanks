@@ -16,6 +16,10 @@ public class Tank : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed;
     private float spriteAngle = 0f;
+    public GameObject trackPrefab;
+    public GameObject trackSpawner;
+    public float trackInterval;
+    private float trackCount;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +58,13 @@ public class Tank : MonoBehaviour
 
             reloadCount += Time.deltaTime;
         }
+
+        if (trackCount >= trackInterval) {
+            Instantiate(trackPrefab, trackSpawner.transform.position, trackSpawner.transform.rotation);
+            trackCount = 0;
+        }
+
+        trackCount += Time.deltaTime;
     }
 
     private void updateSpriteAngle(Vector3 direction) {
