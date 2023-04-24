@@ -53,9 +53,6 @@ public class Tank : MonoBehaviour
                 Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
                 bulletRb.velocity = bulletSpeed * mouseDirection;
 
-                if (fireSound == null) {
-                    Debug.Log("No audio");
-                }
                 fireSound.Play();
 
                 ammo -= 1;

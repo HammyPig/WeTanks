@@ -33,6 +33,7 @@ public class Bullet : MonoBehaviour
             bulletBounce.Play();
 
             if (bounceCount >= bounceLimit) {
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
 
