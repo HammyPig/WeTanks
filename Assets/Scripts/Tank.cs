@@ -21,10 +21,17 @@ public class Tank : MonoBehaviour
     public float trackInterval;
     private float trackCount;
 
+    public AudioSource[] sounds;
+    public AudioSource fireSound;
+    public AudioSource moveSound;
+
     // Start is called before the first frame update
     void Start()
     {
         ammo = maxAmmo;
+        sounds = GetComponents<AudioSource>();
+        fireSound = sounds[0];
+        moveSound = sounds[1];
     }
 
     // Update is called once per frame
@@ -45,6 +52,11 @@ public class Tank : MonoBehaviour
                 GameObject bullet = Instantiate(bulletPrefab, bulletSpawner.transform.position, Quaternion.identity);
                 Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
                 bulletRb.velocity = bulletSpeed * mouseDirection;
+
+                if (fireSound == null) {
+                    Debug.Log("No audio");
+                }
+                fireSound.Play();
 
                 ammo -= 1;
             }
