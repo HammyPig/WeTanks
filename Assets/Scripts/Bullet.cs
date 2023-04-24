@@ -8,10 +8,16 @@ public class Bullet : MonoBehaviour
     public int bounceLimit;
     private int bounceCount;
 
+    private AudioSource bulletBounce;
+    public GameObject explosionPrefab;
+    
+
     // Start is called before the first frame update
     void Start()
     {
         bounceCount = 0;
+
+        bulletBounce = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,6 +30,8 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Wall")) {
+            bulletBounce.Play();
+
             if (bounceCount >= bounceLimit) {
                 Destroy(gameObject);
             }
@@ -32,6 +40,7 @@ public class Bullet : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("Bullet")) {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
