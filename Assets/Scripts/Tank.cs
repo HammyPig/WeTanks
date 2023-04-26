@@ -68,28 +68,17 @@ public class Tank : MonoBehaviour
 
     private void updateSpriteAngle(Vector3 direction) {
         float currentAngle = transform.rotation.eulerAngles.z;
-        float newSpriteAngle1 = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        float newSpriteAngle2 = oppositeAngle(newSpriteAngle1);
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float deltaAngle = Mathf.DeltaAngle(currentAngle, targetAngle);
 
-        float relativeAngle;
-        if ((Mathf.Abs(currentAngle - newSpriteAngle1) % 280) < (Mathf.Abs(currentAngle - newSpriteAngle2) % 280)) {
-            relativeAngle = newSpriteAngle1 - currentAngle;
-        } else {
-            relativeAngle = newSpriteAngle2 - currentAngle;
+        if (Mathf.Abs(deltaAngle) > 90) {
+            deltaAngle -= 180;
         }
 
-        currentAngle = ((currentAngle + relativeAngle + 180) % 360) - 180;
+        currentAngle = ((currentAngle + deltaAngle + 180) % 360) - 180;
 
         Quaternion targetRotation = Quaternion.Euler(0f, 0f, currentAngle);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-    }
-
-    private float oppositeAngle(float angle) {
-        if (angle > 0) {
-            return angle - 180;
-        } else {
-            return angle + 180;
-        }
     }
 
     private void updateTurretAngle(Vector3 mouseDirection) {
