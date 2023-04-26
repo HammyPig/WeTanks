@@ -682,7 +682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 2031845355}
   movementSpeed: 2
-  rotationSpeed: 500
+  rotationSpeed: 250
   turret: {fileID: 1566324314}
   turretRotationSpeed: 1000
   bulletSpawner: {fileID: 743858686}
