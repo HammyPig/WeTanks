@@ -15,7 +15,6 @@ public class Tank : MonoBehaviour
     private float reloadCount;
     public GameObject bulletPrefab;
     public float bulletSpeed;
-    private float spriteAngle = 0f;
     public GameObject trackPrefab;
     public GameObject trackSpawner;
     public float trackInterval;
@@ -68,19 +67,20 @@ public class Tank : MonoBehaviour
     }
 
     private void updateSpriteAngle(Vector3 direction) {
+        float currentAngle = transform.rotation.eulerAngles.z;
         float newSpriteAngle1 = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         float newSpriteAngle2 = oppositeAngle(newSpriteAngle1);
 
         float relativeAngle;
-        if ((Mathf.Abs(spriteAngle - newSpriteAngle1) % 280) < (Mathf.Abs(spriteAngle - newSpriteAngle2) % 280)) {
-            relativeAngle = newSpriteAngle1 - spriteAngle;
+        if ((Mathf.Abs(currentAngle - newSpriteAngle1) % 280) < (Mathf.Abs(currentAngle - newSpriteAngle2) % 280)) {
+            relativeAngle = newSpriteAngle1 - currentAngle;
         } else {
-            relativeAngle = newSpriteAngle2 - spriteAngle;
+            relativeAngle = newSpriteAngle2 - currentAngle;
         }
 
-        spriteAngle = ((spriteAngle + relativeAngle + 180) % 360) - 180;
+        currentAngle = ((currentAngle + relativeAngle + 180) % 360) - 180;
 
-        Quaternion targetRotation = Quaternion.Euler(0f, 0f, spriteAngle);
+        Quaternion targetRotation = Quaternion.Euler(0f, 0f, currentAngle);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
