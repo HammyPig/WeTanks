@@ -43,7 +43,7 @@ public class Tank : MonoBehaviour
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         float deltaAngle = Mathf.DeltaAngle(currentAngle, targetAngle);
 
-        if (deltaAngle > 90) {
+        if (Mathf.Abs(deltaAngle) > 90) {
             rigidBody.velocity = -movementSpeed * transform.right;
         } else {
             rigidBody.velocity = movementSpeed * transform.right;
