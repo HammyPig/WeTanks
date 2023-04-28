@@ -28,6 +28,8 @@ public class Tank : MonoBehaviour
     public AudioSource fireSound;
     public AudioSource moveSound;
 
+    public GameObject explosionPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -93,6 +95,8 @@ public class Tank : MonoBehaviour
             ammo -= 1;
             
             fireSound.Play();
+
+            GameObject explosion = Instantiate(explosionPrefab, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
         }
     }
 

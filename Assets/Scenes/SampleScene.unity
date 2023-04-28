@@ -266,7 +266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6608535879963213910, guid: 49720d6996018a44ea7477ad271697c4, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6608535879963213910, guid: 49720d6996018a44ea7477ad271697c4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -518,7 +518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6608535879963213910, guid: 49720d6996018a44ea7477ad271697c4, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6608535879963213910, guid: 49720d6996018a44ea7477ad271697c4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -698,6 +698,7 @@ MonoBehaviour:
   sounds: []
   fireSound: {fileID: 0}
   moveSound: {fileID: 0}
+  explosionPrefab: {fileID: 762936677525704086, guid: 5a956477179c6fe4d9a01645ffd208c0, type: 3}
 --- !u!4 &2031845354
 Transform:
   m_ObjectHideFlags: 0
@@ -714,7 +715,7 @@ Transform:
   - {fileID: 1895059765}
   - {fileID: 1512881429}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2031845355
 Rigidbody2D:
@@ -1038,7 +1039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6608535879963213910, guid: 49720d6996018a44ea7477ad271697c4, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6608535879963213910, guid: 49720d6996018a44ea7477ad271697c4, type: 3}
       propertyPath: m_LocalPosition.x
