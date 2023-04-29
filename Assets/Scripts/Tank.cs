@@ -34,7 +34,7 @@ public class Tank : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.controller = new PlayerController(this);
+        this.controller = new HardPlayerController(this);
         ammo = maxAmmo;
         sounds = GetComponents<AudioSource>();
         fireSound = sounds[0];
@@ -129,6 +129,37 @@ public class PlayerController : Controller {
             tank.turnTowards(targetAngle + 180);
         }
         
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseDirection = (mousePosition - tank.transform.position).normalized;
+        tank.rotateTurretTowards(mouseDirection);
+
+        if (Input.GetMouseButtonDown(0)) {
+            tank.shoot();
+        }
+    }
+}
+
+public class HardPlayerController : Controller {
+    private Tank tank;
+
+    public HardPlayerController(Tank tank) {
+        this.tank = tank;
+    }
+
+    public void think() {
+        int throttle = (Input.GetKey(KeyCode.W) ? 1 : 0) + (Input.GetKey(KeyCode.S) ? -1 : 0);
+        tank.throttle(throttle);
+
+        float angle = tank.transform.rotation.eulerAngles.z;
+        float direction = (Input.GetKey(KeyCode.A) ? 90 : 0) + (Input.GetKey(KeyCode.D) ? -90 : 0);
+        if (throttle >= 0) {
+            angle += direction;
+        } else {
+            angle -= direction;
+        }
+        
+        tank.turnTowards(angle);
+
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 mouseDirection = (mousePosition - tank.transform.position).normalized;
         tank.rotateTurretTowards(mouseDirection);
