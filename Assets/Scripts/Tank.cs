@@ -79,7 +79,9 @@ public class Tank : MonoBehaviour
             
             fireSound.Play();
 
-            GameObject explosion = Instantiate(explosionPrefab, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
+            float angle = bulletSpawner.transform.rotation.eulerAngles.z;
+            angle -= 90;
+            GameObject explosion = Instantiate(explosionPrefab, bulletSpawner.transform.position, Quaternion.Euler(0f, 0f, angle));
         }
     }
 
