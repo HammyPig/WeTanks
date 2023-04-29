@@ -10,13 +10,14 @@ public class Bullet : MonoBehaviour
 
     private AudioSource bulletBounce;
     public GameObject explosionPrefab;
+    public static bool hasExplodedInCurrentSequence;
     
 
     // Start is called before the first frame update
     void Start()
     {
         bounceCount = 0;
-
+        hasExplodedInCurrentSequence = false;
         bulletBounce = GetComponent<AudioSource>();
     }
 
@@ -26,6 +27,7 @@ public class Bullet : MonoBehaviour
         Vector2 velocity = rigidBody.velocity;
         float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
@@ -41,7 +43,11 @@ public class Bullet : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("Bullet")) {
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            if (!hasExplodedInCurrentSequence) {
+                hasExplodedInCurrentSequence = true;
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            }
+            
             Destroy(gameObject);
         }
 
