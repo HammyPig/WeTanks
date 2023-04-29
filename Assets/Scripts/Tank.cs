@@ -28,10 +28,16 @@ public class Tank : MonoBehaviour
     public AudioSource fireSound;
     public AudioSource moveSound;
 
+    public int maxHealth;
+    private int health;
+    public bool isDead;
+
     // Start is called before the first frame update
     void Start()
     {
         ammo = maxAmmo;
+        health = maxHealth;
+        isDead = false;
         sounds = GetComponents<AudioSource>();
         fireSound = sounds[0];
         moveSound = sounds[1];
@@ -103,6 +109,13 @@ public class Tank : MonoBehaviour
         }
 
         reloadCount += Time.deltaTime;
+    }
+
+    public void loseHealth(int points) {
+        health -= points;
+        if (health <= 0) {
+            isDead = true;
+        }
     }
 
     private void spawnTracks() {

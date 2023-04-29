@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Bullet
+  - Tank
   layers:
   - Default
   - TransparentFX

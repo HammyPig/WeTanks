@@ -16,6 +16,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (tank.isDead) {
+            tank.stop();
+            return;
+        }
+
         Vector2 movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         if (movementDirection.magnitude > 0) {
             tank.move(movementDirection);
