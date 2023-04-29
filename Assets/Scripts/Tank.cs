@@ -60,7 +60,7 @@ public class Tank : MonoBehaviour
         }
     }
 
-    public void throttle(int value) {
+    public void throttle(float value) {
         rigidBody.velocity = (value * movementSpeed) * transform.right;
         if (value != 0) this.spawnTracks();
     }
@@ -138,7 +138,7 @@ public class PlayerController : Controller {
         float targetAngle = Mathf.Atan2(movementDirection.y, movementDirection.x) * Mathf.Rad2Deg;
         float deltaAngle = Mathf.DeltaAngle(currentAngle, targetAngle);
 
-        int throttle = (int) movementDirection.magnitude * (Mathf.Abs(deltaAngle) > 90 ? -1 : 1);
+        float throttle = movementDirection.magnitude * (Mathf.Abs(deltaAngle) > 90 ? -1 : 1);
 
         tank.throttle(throttle);
 
