@@ -37,7 +37,7 @@ public class Tank : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.controller = new HardPlayerController(this);
+        this.controller = new PlayerController(this);
         ammo = maxAmmo;
         health = maxHealth;
         isDead = false;
