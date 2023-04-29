@@ -5,6 +5,7 @@ using UnityEngine;
 public class Tank : MonoBehaviour
 {
     public Rigidbody2D rigidBody;
+    public Controller controller;
     public float movementSpeed;
     public float rotationSpeed;
 
@@ -31,6 +32,7 @@ public class Tank : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.controller = new PlayerController(this);
         ammo = maxAmmo;
         sounds = GetComponents<AudioSource>();
         fireSound = sounds[0];
@@ -40,42 +42,23 @@ public class Tank : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        this.controller.think();
         if (ammo < maxAmmo) {
             reload();
         }
     }
 
-    public void move(Vector2 direction) {
-        float currentAngle = transform.rotation.eulerAngles.z;
-        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        float deltaAngle = Mathf.DeltaAngle(currentAngle, targetAngle);
+    public void throttle(int value) {
+        rigidBody.velocity = (value * movementSpeed) * transform.right;
+        if (value != 0) this.spawnTracks();
+    }
 
-        if (Mathf.Abs(deltaAngle) > 90) {
-            rigidBody.velocity = -movementSpeed * transform.right;
-        } else {
-            rigidBody.velocity = movementSpeed * transform.right;
-        }
-
-        spawnTracks();
+    public void turnTowards(float targetRotation) {
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0f, 0f, targetRotation), rotationSpeed * Time.deltaTime);
     }
 
     public void stop() {
         rigidBody.velocity = 0 * transform.right;
-    }
-
-    public void rotateTowards(Vector2 direction) {
-        float currentAngle = transform.rotation.eulerAngles.z;
-        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        float deltaAngle = Mathf.DeltaAngle(currentAngle, targetAngle);
-
-        if (Mathf.Abs(deltaAngle) > 90) {
-            deltaAngle -= 180;
-        }
-
-        currentAngle = ((currentAngle + deltaAngle + 180) % 360) - 180;
-
-        Quaternion targetRotation = Quaternion.Euler(0f, 0f, currentAngle);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
     public void rotateTurretTowards(Vector2 direction) {
@@ -113,4 +96,46 @@ public class Tank : MonoBehaviour
 
         trackCount += Time.deltaTime;
     }
+}
+
+public interface Controller {
+    public void think();
+}
+
+public class PlayerController : Controller {
+    private Tank tank;
+
+    public PlayerController(Tank tank) {
+        this.tank = tank;
+    }
+
+    public void think() {
+        float currentAngle = tank.transform.rotation.eulerAngles.z;
+        Vector2 movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        float targetAngle = Mathf.Atan2(movementDirection.y, movementDirection.x) * Mathf.Rad2Deg;
+        float deltaAngle = Mathf.DeltaAngle(currentAngle, targetAngle);
+
+        int throttle = (int) movementDirection.magnitude * (Mathf.Abs(deltaAngle) > 90 ? -1 : 1);
+
+        tank.throttle(throttle);
+
+        if (throttle > 0) {
+            tank.turnTowards(targetAngle);
+        } else if (throttle < 0) {
+            tank.turnTowards(targetAngle + 180);
+        }
+        
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseDirection = (mousePosition - tank.transform.position).normalized;
+        tank.rotateTurretTowards(mouseDirection);
+
+        if (Input.GetMouseButtonDown(0)) {
+            tank.shoot();
+        }
+    }
+}
+
+public interface AIController : Controller {
+    public void seek();
+    public void attack();
 }
