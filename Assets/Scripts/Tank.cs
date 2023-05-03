@@ -37,7 +37,6 @@ public class Tank : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.controller = new PlayerController(this);
         ammo = maxAmmo;
         health = maxHealth;
         isDead = false;
@@ -54,7 +53,6 @@ public class Tank : MonoBehaviour
             return;
         }
 
-        this.controller.think();
         if (ammo < maxAmmo) {
             reload();
         }
@@ -119,77 +117,4 @@ public class Tank : MonoBehaviour
 
         trackCount += Time.deltaTime;
     }
-}
-
-public interface Controller {
-    public void think();
-}
-
-public class PlayerController : Controller {
-    private Tank tank;
-
-    public PlayerController(Tank tank) {
-        this.tank = tank;
-    }
-
-    public void think() {
-        float currentAngle = tank.transform.rotation.eulerAngles.z;
-        Vector2 movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-        float targetAngle = Mathf.Atan2(movementDirection.y, movementDirection.x) * Mathf.Rad2Deg;
-        float deltaAngle = Mathf.DeltaAngle(currentAngle, targetAngle);
-
-        float throttle = movementDirection.magnitude * (Mathf.Abs(deltaAngle) > 90 ? -1 : 1);
-
-        tank.throttle(throttle);
-
-        if (throttle > 0) {
-            tank.turnTowards(targetAngle);
-        } else if (throttle < 0) {
-            tank.turnTowards(targetAngle + 180);
-        }
-        
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 mouseDirection = (mousePosition - tank.transform.position).normalized;
-        tank.rotateTurretTowards(mouseDirection);
-
-        if (Input.GetMouseButtonDown(0)) {
-            tank.shoot();
-        }
-    }
-}
-
-public class HardPlayerController : Controller {
-    private Tank tank;
-
-    public HardPlayerController(Tank tank) {
-        this.tank = tank;
-    }
-
-    public void think() {
-        int throttle = (Input.GetKey(KeyCode.W) ? 1 : 0) + (Input.GetKey(KeyCode.S) ? -1 : 0);
-        tank.throttle(throttle);
-
-        float angle = tank.transform.rotation.eulerAngles.z;
-        float direction = (Input.GetKey(KeyCode.A) ? 90 : 0) + (Input.GetKey(KeyCode.D) ? -90 : 0);
-        if (throttle >= 0) {
-            angle += direction;
-        } else {
-            angle -= direction;
-        }
-        
-        tank.turnTowards(angle);
-
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 mouseDirection = (mousePosition - tank.transform.position).normalized;
-        tank.rotateTurretTowards(mouseDirection);
-
-        if (Input.GetMouseButtonDown(0)) {
-            tank.shoot();
-        }
-    }
-}
-
-public interface AIController : Controller {
-    public void seek();
-    public void attack();
 }
