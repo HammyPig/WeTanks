@@ -7,7 +7,7 @@ public abstract class Controller : MonoBehaviour
     protected Tank tank;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         tank = gameObject.GetComponent<Tank>();
     }

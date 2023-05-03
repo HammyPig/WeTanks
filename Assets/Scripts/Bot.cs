@@ -8,6 +8,7 @@ public class Bot : Controller
     public LayerMask wallLayer;
 
     void Start() {
+        base.Start();
         wallLayer = LayerMask.GetMask("Wall");
     }
 
