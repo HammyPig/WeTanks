@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Controller : MonoBehaviour
 {
-    public Tank tank;
+    protected Tank tank;
 
     // Start is called before the first frame update
     void Start()
