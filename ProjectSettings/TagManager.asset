@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Wall
   - Bullet
+  - Tank
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Wall
   - Water
   - UI
   - 
