@@ -25,22 +25,15 @@ public class Tank : MonoBehaviour
     public float trackInterval;
     private float trackCount;
 
-    public AudioSource[] sounds;
-    public AudioSource fireSound;
-    public AudioSource moveSound;
-
     public int maxHealth;
     private int health;
-    public GameObject explosionPrefab;
+    public GameObject explosionFirePrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         ammo = maxAmmo;
         health = maxHealth;
-        sounds = GetComponents<AudioSource>();
-        fireSound = sounds[0];
-        moveSound = sounds[1];
     }
 
     // Update is called once per frame
@@ -95,12 +88,10 @@ public class Tank : MonoBehaviour
             bulletRb.velocity = bulletSpeed * bullet.transform.right;
 
             ammo -= 1;
-            
-            fireSound.Play();
 
             float angle = bulletSpawner.transform.rotation.eulerAngles.z;
             angle -= 90;
-            GameObject explosion = Instantiate(explosionPrefab, bulletSpawner.transform.position, Quaternion.Euler(0f, 0f, angle));
+            GameObject explosion = Instantiate(explosionFirePrefab, bulletSpawner.transform.position, Quaternion.Euler(0f, 0f, angle));
         }
     }
 

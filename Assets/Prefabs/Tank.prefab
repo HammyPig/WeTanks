@@ -483,11 +483,8 @@ MonoBehaviour:
   trackPrefab: {fileID: 3707196521635903168, guid: 9124bbe51c3898a4f972ecb3e7c554de, type: 3}
   trackSpawner: {fileID: 4877593795007587491}
   trackInterval: 0.2
-  sounds: []
-  fireSound: {fileID: 0}
-  moveSound: {fileID: 0}
   maxHealth: 1
-  explosionPrefab: {fileID: 762936677525704086, guid: 5a956477179c6fe4d9a01645ffd208c0, type: 3}
+  explosionFirePrefab: {fileID: 762936677525704086, guid: 5a956477179c6fe4d9a01645ffd208c0, type: 3}
 --- !u!1 &4877593795657156739
 GameObject:
   m_ObjectHideFlags: 0
