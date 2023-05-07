@@ -61,6 +61,19 @@ public class Tank : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
+    public void rotateTowards(Vector2 direction) {
+        float currentAngle = transform.rotation.eulerAngles.z;
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float deltaAngle = Mathf.DeltaAngle(currentAngle, targetAngle);
+
+        if (Mathf.Abs(deltaAngle) > 90) {
+            deltaAngle -= 180;
+        }
+
+        targetAngle = ((currentAngle + deltaAngle + 180) % 360) - 180;
+        rotateTowards(targetAngle);
+    }
+
     public void stop() {
         rigidBody.velocity = 0 * transform.right;
     }
