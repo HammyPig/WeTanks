@@ -5,23 +5,50 @@ using UnityEngine;
 public class Bot : Controller
 {
     public GameObject target;
+    public int shootInterval;
+    private float shootCount = 0;
     public LayerMask wallLayer;
 
     void Start() {
         base.Start();
         wallLayer = LayerMask.GetMask("Wall");
+        tank.maxTurretRotationSpeed = 50;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (canSeeTarget()) {
+            attack();
+        } else {
+            seek();
+        }
+    }
+
+    private bool canSeeTarget() {
         Vector2 raycastDirection = target.transform.position - transform.position;
         float raycastLength = Vector2.Distance(transform.position, target.transform.position);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, raycastDirection, raycastLength, wallLayer);
+        
         if (hit.collider != null) {
-            Debug.Log("cannot see tank");
+            return false;
         } else {
-            Debug.Log("can see tank");
+            return true;
         }
+    }
+
+    private void attack() {
+        tank.rotateTurretTowards(target.transform.position - tank.turret.transform.position);
+
+        if (shootCount >= shootInterval) {
+            tank.shoot();
+            shootCount = 0;
+        }
+
+        shootCount += Time.deltaTime;
+    }
+
+    private void seek() {
+        tank.rotateTurretTowards(tank.turret.transform.eulerAngles.z - 90);
     }
 }
