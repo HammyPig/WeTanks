@@ -31,7 +31,6 @@ public class Tank : MonoBehaviour
 
     public int maxHealth;
     private int health;
-    public bool isDead;
     public GameObject explosionPrefab;
 
     // Start is called before the first frame update
@@ -39,7 +38,6 @@ public class Tank : MonoBehaviour
     {
         ammo = maxAmmo;
         health = maxHealth;
-        isDead = false;
         sounds = GetComponents<AudioSource>();
         fireSound = sounds[0];
         moveSound = sounds[1];
@@ -48,11 +46,6 @@ public class Tank : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if (isDead) {
-            stop();
-            return;
-        }
-
         if (ammo < maxAmmo) {
             reload();
         }
@@ -105,7 +98,7 @@ public class Tank : MonoBehaviour
     public void loseHealth(int points) {
         health -= points;
         if (health <= 0) {
-            isDead = true;
+            GetComponent<Controller>().enabled = false;
         }
     }
 
