@@ -56,8 +56,9 @@ public class Tank : MonoBehaviour
         if (value != 0) this.spawnTracks();
     }
 
-    public void turnTowards(float targetRotation) {
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0f, 0f, targetRotation), rotationSpeed * Time.deltaTime);
+    public void rotateTowards(float targetAngle) {
+        Quaternion targetRotation = Quaternion.Euler(0f, 0f, targetAngle);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
     public void stop() {

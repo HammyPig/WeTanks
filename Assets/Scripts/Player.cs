@@ -17,9 +17,9 @@ public class Player : Controller
         tank.throttle(throttle);
 
         if (throttle > 0) {
-            tank.turnTowards(targetAngle);
+            tank.rotateTowards(targetAngle);
         } else if (throttle < 0) {
-            tank.turnTowards(targetAngle + 180);
+            tank.rotateTowards(targetAngle + 180);
         }
         
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
