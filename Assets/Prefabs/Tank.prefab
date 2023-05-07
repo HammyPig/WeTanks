@@ -485,6 +485,7 @@ MonoBehaviour:
   trackInterval: 0.2
   maxHealth: 1
   explosionFirePrefab: {fileID: 762936677525704086, guid: 5a956477179c6fe4d9a01645ffd208c0, type: 3}
+  explosionTankPrefab: {fileID: 762936677525704086, guid: d3213c821c867aa4ca26e073a2f9df4e, type: 3}
 --- !u!1 &4877593795657156739
 GameObject:
   m_ObjectHideFlags: 0
