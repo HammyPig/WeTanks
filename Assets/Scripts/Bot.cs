@@ -15,7 +15,9 @@ public class Bot : Controller
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, target.transform.position - transform.position, Mathf.Infinity, wallLayer);
+        Vector2 raycastDirection = target.transform.position - transform.position;
+        float raycastLength = Vector2.Distance(transform.position, target.transform.position);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, raycastDirection, raycastLength, wallLayer);
         if (hit.collider != null) {
             Debug.Log("cannot see tank");
         } else {
