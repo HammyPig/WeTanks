@@ -9,7 +9,7 @@ public class Bot : Controller
     private float shootCount = 0;
     public LayerMask wallLayer;
 
-    void Start() {
+    new void Start() {
         base.Start();
         wallLayer = LayerMask.GetMask("Wall");
         tank.maxTurretRotationSpeed = 50;
