@@ -7,7 +7,7 @@ public class Bot : Controller
     public GameObject target;
     public int shootInterval;
     private float shootCount = 0;
-    public LayerMask wallLayer;
+    private LayerMask wallLayer;
 
     new void Start() {
         base.Start();
