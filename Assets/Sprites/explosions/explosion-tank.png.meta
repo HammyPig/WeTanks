@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 138828ac7f2e3af4bbd549fb6b7a1004
+guid: c07532e57c64308449f16df6cc6b74f4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: explosion-fire_0
+      name: explosion-tank_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7664b874120610647acb02434a0f7eba
-      internalID: -2066885419
+      spriteID: 26fc331d81f91eb44bf2e6641252c9f0
+      internalID: -2024306089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion-fire_1
+      name: explosion-tank_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 48
         y: 0
-        width: 64
-        height: 64
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1f6b2d69865ea347823f6ba53780944
-      internalID: -125955458
+      spriteID: 9c7c890efdb6d3440bf6c10c071ca6a6
+      internalID: 1872114394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion-fire_2
+      name: explosion-tank_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 96
         y: 0
-        width: 64
-        height: 64
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +173,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05a025bc483fb5a478ee3d6483759b7e
-      internalID: -1086442593
+      spriteID: c9009c40b83674343be076fc3e00328f
+      internalID: 233826187
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion-fire_3
+      name: explosion-tank_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 772efb676faf1eb4c8447ab9a18e1701
+      internalID: 1985946827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explosion-tank_4
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 64
-        height: 64
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b73ece2cf1864d44bda4ff9afeb09b7
-      internalID: 2044500617
+      spriteID: 2c6f2ebe088961c44a62233bf3eacd90
+      internalID: -730741631
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion-fire_4
+      name: explosion-tank_5
       rect:
         serializedVersion: 2
-        x: 256
+        x: 240
         y: 0
-        width: 64
-        height: 64
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +236,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22a134563f43d0f448353dae742f205c
-      internalID: 1704650810
+      spriteID: c3d5c5f6c693013419bf171360650df7
+      internalID: 248847675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion-fire_5
+      name: explosion-tank_6
       rect:
         serializedVersion: 2
-        x: 320
+        x: 288
         y: 0
-        width: 64
-        height: 64
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,20 +257,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c85bdab6c76c5243aae485a63b1d5be
-      internalID: -667590237
+      spriteID: 0377ecdbde8072e40a1e333013e45a4d
+      internalID: 2127493044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion-fire_6
+      name: explosion-tank_7
       rect:
         serializedVersion: 2
-        x: 384
+        x: 336
         y: 0
-        width: 64
-        height: 64
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,29 +278,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fcb5ba71b9e20fb4386fca1a6061be36
-      internalID: -1410264967
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: explosion-fire_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 259529afe9ad62a4fa11971be1c89b1e
-      internalID: -460865647
+      spriteID: 5d69d0576ed4b714c8b6f3b062e90168
+      internalID: 450627389
       vertices: []
       indices: 
       edges: []
@@ -295,14 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      explosion-fire_0: -2066885419
-      explosion-fire_1: -125955458
-      explosion-fire_2: -1086442593
-      explosion-fire_3: 2044500617
-      explosion-fire_4: 1704650810
-      explosion-fire_5: -667590237
-      explosion-fire_6: -1410264967
-      explosion-fire_7: -460865647
+      explosion-tank_0: -2024306089
+      explosion-tank_1: 1872114394
+      explosion-tank_2: 233826187
+      explosion-tank_3: 1985946827
+      explosion-tank_4: -730741631
+      explosion-tank_5: 248847675
+      explosion-tank_6: 2127493044
+      explosion-tank_7: 450627389
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
