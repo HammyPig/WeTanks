@@ -10,7 +10,7 @@ public class Tank : MonoBehaviour
     public float rotationSpeed;
 
     public GameObject turret;
-    public float turretRotationSpeed;
+    public float maxTurretRotationSpeed;
 
     public GameObject bulletSpawner;
     public int maxAmmo;
@@ -64,10 +64,14 @@ public class Tank : MonoBehaviour
         rigidBody.velocity = 0 * transform.right;
     }
 
+    public void rotateTurretTowards(float angle) {
+        Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle);
+        turret.transform.rotation = Quaternion.RotateTowards(turret.transform.rotation, targetRotation, maxTurretRotationSpeed * Time.deltaTime);
+    }
+
     public void rotateTurretTowards(Vector2 direction) {
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.Euler(0f, 0f, targetAngle);
-        turret.transform.rotation = Quaternion.RotateTowards(turret.transform.rotation, targetRotation, turretRotationSpeed * Time.deltaTime);
+        rotateTurretTowards(targetAngle);
     }
 
     public void shoot() {
