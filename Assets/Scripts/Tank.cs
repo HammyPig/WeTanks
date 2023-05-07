@@ -110,7 +110,6 @@ public class Tank : MonoBehaviour
         if (health <= 0) {
             GetComponent<Controller>().enabled = false;
             Instantiate(explosionTankPrefab, transform.position, Quaternion.identity);
-            Destroy(gameObject);
         }
     }
 
