@@ -6,10 +6,10 @@ public class Bot : Controller
 {
     public GameObject target;
     public int shootInterval;
-    private float shootCount = 0;
+    protected float shootCount = 0;
     private LayerMask wallLayer;
 
-    new void Start() {
+    protected override void Start() {
         base.Start();
         wallLayer = LayerMask.GetMask("Wall");
         tank.maxTurretRotationSpeed = 50;
@@ -25,7 +25,7 @@ public class Bot : Controller
         }
     }
 
-    private bool canSeeTarget() {
+    protected bool canSeeTarget() {
         Vector2 raycastDirection = target.transform.position - transform.position;
         float raycastLength = Vector2.Distance(transform.position, target.transform.position);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, raycastDirection, raycastLength, wallLayer);
