@@ -15,22 +15,22 @@ public class Chase : Bot
         agent.updateUpAxis = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    protected override void seek() {
+        ;
+    }
+
+    protected override void attack() {
         agent.SetDestination(new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z));
         Vector2 movementDirection = (transform.position - agent.steeringTarget).normalized;
         tank.moveTowards(movementDirection);
-        
-        if (canSeeTarget()) {
-            tank.rotateTurretTowards(target.transform.position - tank.turret.transform.position);
 
-            if (shootCount >= shootInterval) {
-                tank.shoot();
-                shootCount = 0;
-            }
+        tank.rotateTurretTowards(target.transform.position - tank.turret.transform.position);
 
-            shootCount += Time.deltaTime;
+        if (shootCount >= shootInterval) {
+            tank.shoot();
+            shootCount = 0;
         }
+
+        shootCount += Time.deltaTime;
     }
 }
