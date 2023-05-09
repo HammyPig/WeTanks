@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 748060599670432615}
   - component: {fileID: 3150303026455348465}
   - component: {fileID: 556562229824598635}
-  - component: {fileID: 7380399335083886413}
+  - component: {fileID: 5975208376076763102}
   m_Layer: 0
-  m_Name: explosion-fire
+  m_Name: explosion-tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 762936677525704086}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.7951126, y: 0.7917978, z: 0.058306813}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,7 +109,7 @@ Animator:
   m_GameObject: {fileID: 762936677525704086}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6063eae98390d9a41af24526cff8edff, type: 2}
+  m_Controller: {fileID: 9100000, guid: e07fbadd48ad86c4ea6f051b00bb838c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -120,7 +120,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!82 &7380399335083886413
+--- !u!82 &5975208376076763102
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ef6f8e4a031b1724da77f05edd1caf8c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ffd89b1a5e90fc540af5157cf77f8aff, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
