@@ -51,7 +51,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Tank")) {
+        if (collision.gameObject.CompareTag("Tank") || collision.gameObject.CompareTag("Player")) {
             Tank tank = collision.gameObject.GetComponent<Tank>();
             tank.loseHealth(1);
             Destroy(gameObject);

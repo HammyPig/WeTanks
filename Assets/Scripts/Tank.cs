@@ -29,6 +29,7 @@ public class Tank : MonoBehaviour
     private int health;
     public GameObject explosionFirePrefab;
     public GameObject explosionTankPrefab;
+    public GameObject crossPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +66,20 @@ public class Tank : MonoBehaviour
         }
 
         targetAngle = ((currentAngle + deltaAngle + 180) % 360) - 180;
+        rotateTowards(targetAngle);
+    }
+
+    public void moveTowards(Vector2 direction) {
+        float currentAngle = transform.rotation.eulerAngles.z;
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float deltaAngle = Mathf.DeltaAngle(currentAngle, targetAngle);
+
+        if (Mathf.Abs(deltaAngle) > 90) {
+            throttle(1);
+        } else {
+            throttle(-1);
+        }
+
         rotateTowards(targetAngle);
     }
 
@@ -110,6 +125,8 @@ public class Tank : MonoBehaviour
         if (health <= 0) {
             GetComponent<Controller>().enabled = false;
             Instantiate(explosionTankPrefab, transform.position, Quaternion.identity);
+            Instantiate(crossPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 
