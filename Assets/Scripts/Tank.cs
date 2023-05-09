@@ -29,6 +29,7 @@ public class Tank : MonoBehaviour
     private int health;
     public GameObject explosionFirePrefab;
     public GameObject explosionTankPrefab;
+    public GameObject crossPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -124,6 +125,8 @@ public class Tank : MonoBehaviour
         if (health <= 0) {
             GetComponent<Controller>().enabled = false;
             Instantiate(explosionTankPrefab, transform.position, Quaternion.identity);
+            Instantiate(crossPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 
