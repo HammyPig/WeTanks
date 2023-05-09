@@ -1257,7 +1257,7 @@ PrefabInstance:
       objectReference: {fileID: 2097141632}
     - target: {fileID: 2613669004127145536, guid: 382c07eb88b844d4b8aa7fcdbdf629a7, type: 3}
       propertyPath: m_Name
-      value: Bot Tank
+      value: Sentry Tank
       objectReference: {fileID: 0}
     - target: {fileID: 2613669004127145548, guid: 382c07eb88b844d4b8aa7fcdbdf629a7, type: 3}
       propertyPath: m_RootOrder

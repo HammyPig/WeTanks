@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bot : Controller
+public abstract class Bot : Controller
 {
     protected GameObject target;
-    public int shootInterval;
+    public int shootInterval = 5;
     protected float shootCount = 0;
     private LayerMask wallLayer;
 
@@ -62,18 +62,6 @@ public class Bot : Controller
         }
     }
 
-    protected virtual void attack() {
-        tank.rotateTurretTowards(target.transform.position - tank.turret.transform.position);
-
-        if (shootCount >= shootInterval) {
-            tank.shoot();
-            shootCount = 0;
-        }
-
-        shootCount += Time.deltaTime;
-    }
-
-    protected virtual void seek() {
-        tank.rotateTurretTowards(tank.turret.transform.eulerAngles.z - 90);
-    }
+    protected abstract void seek();
+    protected abstract void attack();
 }

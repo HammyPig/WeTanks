@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4877593795528779345, guid: ecb7018f5f4266a4989214cb12a2aa6e, type: 3}
       propertyPath: m_Name
-      value: Bot Tank
+      value: Bot Tank Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4877593795528779357, guid: ecb7018f5f4266a4989214cb12a2aa6e, type: 3}
       propertyPath: m_RootOrder
@@ -62,7 +62,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4877593795528779345, guid: ecb7018f5f4266a4989214cb12a2aa6e, type: 3}
   m_PrefabInstance: {fileID: 7490945964041496593}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &321583969
+--- !u!114 &3661822280586660576
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,8 +71,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2613669004127145536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f24852e24e234322988b447db3e49bb, type: 3}
+  m_Script: {fileID: 11500000, guid: aa6b08c08da88c64d9433f30127d7913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   shootInterval: 5
