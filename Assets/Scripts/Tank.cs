@@ -68,6 +68,20 @@ public class Tank : MonoBehaviour
         rotateTowards(targetAngle);
     }
 
+    public void moveTowards(Vector2 direction) {
+        float currentAngle = transform.rotation.eulerAngles.z;
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float deltaAngle = Mathf.DeltaAngle(currentAngle, targetAngle);
+
+        if (Mathf.Abs(deltaAngle) > 90) {
+            throttle(1);
+        } else {
+            throttle(-1);
+        }
+
+        rotateTowards(targetAngle);
+    }
+
     public void stop() {
         rigidBody.velocity = 0 * transform.right;
     }
