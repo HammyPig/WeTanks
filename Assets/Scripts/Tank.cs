@@ -46,7 +46,7 @@ public class Tank : MonoBehaviour
         }
     }
 
-    public void throttle(float value) {
+    public void setThrottle(float value) {
         rigidBody.velocity = (value * movementSpeed) * transform.right;
         if (value != 0) this.spawnTracks();
     }
@@ -70,17 +70,22 @@ public class Tank : MonoBehaviour
     }
 
     public void moveTowards(Vector2 direction) {
+        if (direction.magnitude == 0) {
+            setThrottle(0);
+            return;
+        }
+        
         float currentAngle = transform.rotation.eulerAngles.z;
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         float deltaAngle = Mathf.DeltaAngle(currentAngle, targetAngle);
 
         if (Mathf.Abs(deltaAngle) > 90) {
-            throttle(1);
+            setThrottle(-direction.magnitude);
+            rotateTowards(targetAngle + 180);
         } else {
-            throttle(-1);
+            setThrottle(direction.magnitude);
+            rotateTowards(targetAngle);
         }
-
-        rotateTowards(targetAngle);
     }
 
     public void stop() {

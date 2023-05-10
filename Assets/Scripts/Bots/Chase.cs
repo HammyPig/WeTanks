@@ -21,7 +21,7 @@ public class Chase : Bot
 
     protected override void attack() {
         agent.SetDestination(new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z));
-        Vector2 movementDirection = (transform.position - agent.steeringTarget).normalized;
+        Vector2 movementDirection = (agent.steeringTarget - transform.position).normalized;
         tank.moveTowards(movementDirection);
 
         tank.rotateTurretTowards(target.transform.position - tank.turret.transform.position);
