@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class Bot : Controller
@@ -60,6 +61,64 @@ public abstract class Bot : Controller
         RaycastHit2D hit = Physics2D.Raycast(transform.position, raycastDirection, raycastLength, obstacleLayer);
         
         if (hit.collider != null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    protected Vector2 getClearPathDirection(Vector2 currentMovementDirection, float obstacleDetectionRadius) {
+        int numDirections = 8;
+        float angleInterval = 360 / numDirections;
+
+        List<Vector2> directions = new List<Vector2>();
+        for (int i = 0; i < numDirections; i++) {
+            float angle = i * angleInterval;
+            Vector2 direction = Quaternion.Euler(0f, 0f, angle) * Vector2.right;
+            directions.Add(direction);
+        }
+
+        List<Vector2> validDirections = new List<Vector2>();
+        foreach (Vector2 direction in directions) {
+            if (!canSeeObstacle(direction, obstacleDetectionRadius)) {
+                validDirections.Add(direction);
+            }
+        }
+
+        if (validDirections.Count == 0) {
+            validDirections = directions;
+        }
+
+        float[] probabilities = new float[validDirections.Count];
+        for (int i = 0; i < validDirections.Count; i++) {
+            float angleDifference = Vector2.Angle(currentMovementDirection, validDirections[i]);
+            float probability = angleDifference / 180;
+            probabilities[i] = Mathf.Exp(-27 * probability);
+        }
+
+        int selectedIndex = weightedProbability(probabilities);
+        return validDirections[selectedIndex];
+    }
+
+    protected int weightedProbability(float[] probabilities) {
+        float randomValue = Random.Range(0, probabilities.Sum());
+        float cumulativeProbability = 0f;
+
+        for (int i = 0; i < probabilities.Length; i++) {
+            cumulativeProbability += probabilities[i];
+
+            if (randomValue <= cumulativeProbability) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    protected bool canSeeObstacle(Vector2 direction, float distance) {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, obstacleLayer);
+        
+        if (hit.collider == null) {
             return false;
         } else {
             return true;
