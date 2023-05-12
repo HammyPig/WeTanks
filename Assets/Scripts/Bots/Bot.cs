@@ -7,9 +7,9 @@ public abstract class Bot : Controller
     protected GameObject target;
     public int shootInterval = 5;
     protected float shootCount = 0;
-    private LayerMask wallLayer;
-    private LayerMask botLayer;
-    private LayerMask obstacleLayer;
+    protected LayerMask wallLayer;
+    protected LayerMask botLayer;
+    protected LayerMask obstacleLayer;
 
     protected override void Start() {
         base.Start();

@@ -1244,6 +1244,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee4856fc93b5b464fa3c7e3ddadd52f8, type: 3}
+--- !u!1001 &7217954533194927644
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5795055497963694356, guid: 86ea1fe6c3ea76c4caa20a9c4da8ccbd, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795055497963694356, guid: 86ea1fe6c3ea76c4caa20a9c4da8ccbd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795055497963694356, guid: 86ea1fe6c3ea76c4caa20a9c4da8ccbd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795055497963694356, guid: 86ea1fe6c3ea76c4caa20a9c4da8ccbd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795055497963694356, guid: 86ea1fe6c3ea76c4caa20a9c4da8ccbd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795055497963694356, guid: 86ea1fe6c3ea76c4caa20a9c4da8ccbd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795055497963694356, guid: 86ea1fe6c3ea76c4caa20a9c4da8ccbd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795055497963694356, guid: 86ea1fe6c3ea76c4caa20a9c4da8ccbd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795055497963694356, guid: 86ea1fe6c3ea76c4caa20a9c4da8ccbd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795055497963694356, guid: 86ea1fe6c3ea76c4caa20a9c4da8ccbd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795055497963694356, guid: 86ea1fe6c3ea76c4caa20a9c4da8ccbd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795055497963694360, guid: 86ea1fe6c3ea76c4caa20a9c4da8ccbd, type: 3}
+      propertyPath: m_Name
+      value: Scout Tank
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 86ea1fe6c3ea76c4caa20a9c4da8ccbd, type: 3}
 --- !u!1001 &7490945963712767528
 PrefabInstance:
   m_ObjectHideFlags: 0
