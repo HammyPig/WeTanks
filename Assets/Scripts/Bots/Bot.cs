@@ -8,10 +8,14 @@ public abstract class Bot : Controller
     public int shootInterval = 5;
     protected float shootCount = 0;
     private LayerMask wallLayer;
+    private LayerMask botLayer;
+    private LayerMask obstacleLayer;
 
     protected override void Start() {
         base.Start();
         wallLayer = LayerMask.GetMask("Wall");
+        botLayer = LayerMask.GetMask("Bot");
+        obstacleLayer = wallLayer | botLayer;
         tank.maxTurretRotationSpeed = 50;
     }
 
@@ -53,7 +57,7 @@ public abstract class Bot : Controller
     protected bool canSee(GameObject player) {
         Vector2 raycastDirection = player.transform.position - transform.position;
         float raycastLength = Vector2.Distance(transform.position, player.transform.position);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, raycastDirection, raycastLength, wallLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, raycastDirection, raycastLength, obstacleLayer);
         
         if (hit.collider != null) {
             return false;

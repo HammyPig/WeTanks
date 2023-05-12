@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4877593795528779345, guid: ecb7018f5f4266a4989214cb12a2aa6e, type: 3}
       propertyPath: m_Name
-      value: Bot Tank Variant
+      value: Sentry Tank Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877593795528779345, guid: ecb7018f5f4266a4989214cb12a2aa6e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4877593795528779357, guid: ecb7018f5f4266a4989214cb12a2aa6e, type: 3}
       propertyPath: m_RootOrder

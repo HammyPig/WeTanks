@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4877593795528779345, guid: ecb7018f5f4266a4989214cb12a2aa6e, type: 3}
       propertyPath: m_Name
-      value: Chase Tank
+      value: Chase Tank Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877593795528779345, guid: ecb7018f5f4266a4989214cb12a2aa6e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4877593795528779357, guid: ecb7018f5f4266a4989214cb12a2aa6e, type: 3}
       propertyPath: m_RootOrder
@@ -96,5 +100,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190c784a4f2e1144989b318412aa7836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   shootInterval: 5
