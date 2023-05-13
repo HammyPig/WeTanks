@@ -9,13 +9,6 @@ public class Sentry : Bot
     }
 
     protected override void attack() {
-        tank.rotateTurretTowards(target.transform.position - tank.turret.transform.position);
-
-        if (shootCount >= shootInterval) {
-            tank.shoot();
-            shootCount = 0;
-        }
-
-        shootCount += Time.deltaTime;
+        shootAt(target.transform.position);
     }
 }

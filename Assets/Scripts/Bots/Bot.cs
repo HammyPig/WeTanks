@@ -125,6 +125,17 @@ public abstract class Bot : Controller
         }
     }
 
+    protected void shootAt(Vector3 position) {
+        tank.rotateTurretTowards(position - tank.turret.transform.position);
+
+        if (shootCount >= shootInterval) {
+            tank.shoot();
+            shootCount = 0;
+        }
+
+        shootCount += Time.deltaTime;
+    }
+
     protected abstract void seek();
     protected abstract void attack();
 }

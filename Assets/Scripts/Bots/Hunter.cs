@@ -26,14 +26,6 @@ public class Hunter : Bot
         agent.SetDestination(new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z));
         movementDirection = (agent.steeringTarget - transform.position).normalized;
         tank.moveTowards(movementDirection);
-
-        tank.rotateTurretTowards(target.transform.position - tank.turret.transform.position);
-
-        if (shootCount >= shootInterval) {
-            tank.shoot();
-            shootCount = 0;
-        }
-
-        shootCount += Time.deltaTime;
+        shootAt(target.transform.position);
     }
 }
